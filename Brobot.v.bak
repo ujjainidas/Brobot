@@ -1,0 +1,16 @@
+//create module 
+module blink(input wire clk, output wire LED);
+	//binary counter
+	reg [31:0]cnt; //32-bit counter
+	
+	initial begin
+		cnt <= 32'h00000000; //initialize counter to 0
+	end
+	
+	always @(posedge clk) begin
+		cnt <= cnt + 1; //increment counter at every clock cycle
+	end
+	
+	//LED is the 25th bit of the counter
+	assign LED = cnt[24];
+endmodule
